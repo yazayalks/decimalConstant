@@ -1,0 +1,409 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Code_Analysis
+{
+    public enum TypeLexemes
+    {
+        textOrIdentifier, // текст или переменная
+        identifier, // переменная
+        text, // текст 100%
+        function, // printf
+        errorAndFunction, // printf
+        number, // число
+        quote,// кавычка
+        comma, // запятая
+        leftBracket, // левая скобка
+        rightBracket, // правая скобка
+        reference, // ссылка на переменную
+        endString, // конец строки
+        semicolon, // точка с запятой
+        error, // ошибка
+        space, // пробел
+        symbol, // символ
+        secondQuote, // вторая кавычка
+        plus, // плюс
+        minus, // минус
+        power // степень
+
+    }
+
+    public struct Lexemes
+    {
+        public int start;
+        public string value;
+        public TypeLexemes type;
+
+        public Lexemes(int start, string value, TypeLexemes type)
+        {
+            this.start = start;
+            this.value = value;
+            this.type = type;
+        }
+    }
+
+    public static class CodeScanner
+    {
+        public static Lexemes FindNumber(string s, int i)
+        {
+            if (i >= s.Length)
+            {
+                return new Lexemes(i, "", TypeLexemes.endString);
+            }
+            while (s[i] == '\t' || s[i] == ' ' || s[i] == '\n')
+            {
+                i++;
+                if (i >= s.Length)
+                    return new Lexemes(i, "", TypeLexemes.endString);
+            }
+            if ((!Char.IsDigit(s[i])) && (s[i] != '+') && (s[i] != '-') && (s[i] != ',') && (s[i] != 'E') && (s[i] != 'e'))
+            {
+                int j = i;
+                while ((!Char.IsDigit(s[j])) && (s[j] != '+') && (s[j] != '-') && (s[j] != ',') && (s[j] != 'E') && (s[j] != 'e'))
+                {
+                    j++;
+                    if (j >= s.Length)
+                        break;
+                }
+                return new Lexemes(i, s.Substring(i, j - i), TypeLexemes.error);
+            }
+            if (Char.IsDigit(s[i]))
+            {
+                int j = i;
+                while (Char.IsDigit(s[j]))
+                {
+                    j++;
+                    if (j >= s.Length)
+                        break;
+                }
+                return new Lexemes(i, s.Substring(i, j - i), TypeLexemes.number);
+            }
+            if ((i < s.Length) && (s[i] == '+'))
+            {
+                return new Lexemes(i, "+", TypeLexemes.plus);
+            }
+            if ((i < s.Length) && (s[i] == '-'))
+            {
+                return new Lexemes(i, "-", TypeLexemes.minus);
+            }
+            if ((i < s.Length) && (s[i] == ','))
+            {
+                return new Lexemes(i, ",", TypeLexemes.comma);
+            }
+            if ((i < s.Length) && ((s[i] == 'E') || (s[i] == 'e')))
+            {
+                return new Lexemes(i, "E", TypeLexemes.power);
+            }
+
+            return new Lexemes(i, s[i].ToString(), TypeLexemes.error);
+        }
+    }
+}
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Code_Analysis
+{
+    public enum TypeLexemes
+    {
+        textOrIdentifier, // текст или переменная
+        identifier, // переменная
+        text, // текст 100%
+        function, // printf
+        errorAndFunction, // printf
+        number, // число
+        quote,// кавычка
+        comma, // запятая
+        leftBracket, // левая скобка
+        rightBracket, // правая скобка
+        reference, // ссылка на переменную
+        endString, // конец строки
+        semicolon, // точка с запятой
+        error, // ошибка
+        space, // пробел
+        symbol, // символ
+        secondQuote, // вторая кавычка
+        plus, // плюс
+        minus, // минус
+        power // степень
+
+    }
+
+    public struct Lexemes
+    {
+        public int start;
+        public string value;
+        public TypeLexemes type;
+
+        public Lexemes(int start, string value, TypeLexemes type)
+        {
+            this.start = start;
+            this.value = value;
+            this.type = type;
+        }
+    }
+
+    public static class CodeScanner
+    {
+        public static Lexemes FindNumber(string s, int i)
+        {
+            if (i >= s.Length)
+            {
+                return new Lexemes(i, "", TypeLexemes.endString);
+            }
+            while (s[i] == '\t' || s[i] == ' ' || s[i] == '\n')
+            {
+                i++;
+                if (i >= s.Length)
+                    return new Lexemes(i, "", TypeLexemes.endString);
+            }
+            if ((!Char.IsDigit(s[i])) && (s[i] != '+') && (s[i] != '-') && (s[i] != ',') && (s[i] != 'E') && (s[i] != 'e'))
+            {
+                int j = i;
+                while ((!Char.IsDigit(s[j])) && (s[j] != '+') && (s[j] != '-') && (s[j] != ',') && (s[j] != 'E') && (s[j] != 'e'))
+                {
+                    j++;
+                    if (j >= s.Length)
+                        break;
+                }
+                return new Lexemes(i, s.Substring(i, j - i), TypeLexemes.error);
+            }
+            if (Char.IsDigit(s[i]))
+            {
+                int j = i;
+                while (Char.IsDigit(s[j]))
+                {
+                    j++;
+                    if (j >= s.Length)
+                        break;
+                }
+                return new Lexemes(i, s.Substring(i, j - i), TypeLexemes.number);
+            }
+            if ((i < s.Length) && (s[i] == '+'))
+            {
+                return new Lexemes(i, "+", TypeLexemes.plus);
+            }
+            if ((i < s.Length) && (s[i] == '-'))
+            {
+                return new Lexemes(i, "-", TypeLexemes.minus);
+            }
+            if ((i < s.Length) && (s[i] == ','))
+            {
+                return new Lexemes(i, ",", TypeLexemes.comma);
+            }
+            if ((i < s.Length) && ((s[i] == 'E') || (s[i] == 'e')))
+            {
+                return new Lexemes(i, "E", TypeLexemes.power);
+            }
+
+            return new Lexemes(i, s[i].ToString(), TypeLexemes.error);
+        }
+    }
+    /* public static bool CorrectAfterPrintfStr(string s)
+     {
+         string ss;
+         int i;
+         i = s.IndexOf("(", 0);
+         if (i != -1)
+         {
+             ss = s.Remove(i);
+             ss = ss.Replace(" ", "");
+             if (string.IsNullOrEmpty(ss))
+             {
+                 return true;
+             }
+         }
+         ss = s.Replace(" ", "");
+
+
+         if (string.IsNullOrEmpty(ss))
+         {
+             return true;
+
+         }
+         else
+         {
+             return false;
+         }
+     }
+     public static bool CorrectPrevPrintfStr(string s)
+     {
+
+         string ss = s.Replace(" ", "");
+
+         if (string.IsNullOrEmpty(ss))
+         {
+             return true;
+         }
+         else
+         {
+             return false;
+         }
+     }
+     public static Lexemes FindPrintf(string s, int i)
+     {
+
+         string errorStr = s;
+         int middlePrintf1 = -1;
+         int middlePrintf2 = -1;
+         char[] charsToTrim = { ' ', '\n', '\t' };
+
+         // частные случаи printf в начале
+         if (s == "printf") // printf
+         {
+             return new Lexemes(0, "printf", TypeLexemes.function);
+         }
+
+         if (s == "printf") // printf_
+         {
+             return new Lexemes(0, "printf", TypeLexemes.function);
+         }
+
+         if (s == "printf(") // printf(
+         {
+             return new Lexemes(0, "printf(", TypeLexemes.function);
+         }
+
+         errorStr = s.Trim(charsToTrim); // printf___bbb
+         if ((errorStr.Length >= 8) && (errorStr.Remove(7) == "printf "))
+         {
+             int k = s.IndexOf("printf", 0);
+             return new Lexemes(k, "printf", TypeLexemes.function);
+         }
+
+         errorStr = s.Trim(charsToTrim); // printf(___bbb
+         if ((errorStr.Length >= 8) && (errorStr.Remove(7) == "printf("))
+         {
+             int k = s.IndexOf("printf(", 0);
+             return new Lexemes(k, "printf(", TypeLexemes.function);
+         }
+
+         errorStr = s.Trim(charsToTrim); // ___printf___
+         if (errorStr == "printf")
+         {
+             int k = s.IndexOf("printf", 0);
+             return new Lexemes(k, "printf", TypeLexemes.function);
+         }
+
+         errorStr = s.Trim(charsToTrim); //  ___printf(___
+         if (errorStr == "printf(")
+         {
+             int k = s.IndexOf("printf(", 0);
+             return new Lexemes(k, "printf(", TypeLexemes.function);
+         }
+
+         // Ищем printf в середине
+         middlePrintf1 = s.IndexOf(" printf ", 0);
+         middlePrintf2 = s.IndexOf(" printf(", 0);
+         if ((middlePrintf1 != -1) && (middlePrintf2 != -1))
+         {
+             if (middlePrintf1 > middlePrintf2)
+             {
+                 errorStr = s.Remove(middlePrintf2);
+                 return new Lexemes(middlePrintf2 + 1, "printf", TypeLexemes.function);
+             }
+             if (middlePrintf2 > middlePrintf1)
+             {
+                 errorStr = s.Remove(middlePrintf1);
+                 return new Lexemes(middlePrintf1 + 1, "printf", TypeLexemes.function);
+             }
+         }
+         if ((middlePrintf1 != -1) && (middlePrintf2 == -1))
+         {
+             errorStr = s.Remove(middlePrintf1);
+             return new Lexemes(middlePrintf1 + 1, "printf", TypeLexemes.function);
+
+         }
+         if ((middlePrintf2 != -1) && (middlePrintf1 == -1))
+         {
+             errorStr = s.Remove(middlePrintf2);
+             return new Lexemes(middlePrintf2 + 1, "printf", TypeLexemes.function);
+         }
+
+         if ((s.Length >= 7) && ((s.Substring(s.Length - 7) == " printf")))
+         {
+
+             return new Lexemes(s.Length - 6, "printf", TypeLexemes.function);
+         }
+
+
+         errorStr = s.Trim(charsToTrim);
+         return new Lexemes(-1, "", TypeLexemes.error);
+
+     }
+     public static Lexemes FindLeftBracket(string s, int i)
+     {
+
+         int indexLeftBracket = -1; // левая скобка
+         indexLeftBracket = s.IndexOf("(", i);
+         if (indexLeftBracket != -1)
+         { 
+             return new Lexemes(indexLeftBracket, "(", TypeLexemes.leftBracket); 
+         }
+         else
+         {
+             return new Lexemes(-1, "", TypeLexemes.error);
+         }
+     }
+     public static Lexemes FindRightBracket(string s, int i)
+     {
+
+         int indexLeftBracket = -1; // левая скобка
+         indexLeftBracket = s.IndexOf(")", i);
+         if (indexLeftBracket != -1)
+         {
+             return new Lexemes(indexLeftBracket, ")", TypeLexemes.rightBracket);
+         }
+         else
+         {
+             return new Lexemes(i, "", TypeLexemes.error);
+         }
+     }
+
+     public static Lexemes FindQuote(string s, int i)
+     {
+         int indexQuote = -1;// кавычка
+         indexQuote = s.IndexOf("\"", i);
+         if (indexQuote != -1)
+         {
+             return new Lexemes(indexQuote, "\"", TypeLexemes.quote);
+         }
+         else
+         {
+             return new Lexemes(-1, "", TypeLexemes.error);
+         }
+     }
+     public static Lexemes FindSemicolon(string s, int i)
+     {
+         int indexQuote = -1;// точка с запятой
+         indexQuote = s.IndexOf(";", i);
+         if (indexQuote != -1)
+         {
+             return new Lexemes(indexQuote, ";", TypeLexemes.semicolon);
+         }
+         else
+         {
+             return new Lexemes(-1, "", TypeLexemes.error);
+         }
+     }*/
+}
+
+
+
+
+
+
+
+
+

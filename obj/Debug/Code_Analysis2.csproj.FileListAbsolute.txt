@@ -1,0 +1,11 @@
+C:\Users\hp\source\repos\theory_of_compile\Code_Analysis\Code_Analysis\bin\Debug\Code_Analysis.exe.config
+C:\Users\hp\source\repos\theory_of_compile\Code_Analysis\Code_Analysis\bin\Debug\Code_Analysis.exe
+C:\Users\hp\source\repos\theory_of_compile\Code_Analysis\Code_Analysis\bin\Debug\Code_Analysis.pdb
+C:\Users\hp\source\repos\theory_of_compile\Code_Analysis\Code_Analysis\obj\Debug\Code_Analysis2.csprojAssemblyReference.cache
+C:\Users\hp\source\repos\theory_of_compile\Code_Analysis\Code_Analysis\obj\Debug\Code_Analysis.Form1.resources
+C:\Users\hp\source\repos\theory_of_compile\Code_Analysis\Code_Analysis\obj\Debug\Code_Analysis.HelpForm.resources
+C:\Users\hp\source\repos\theory_of_compile\Code_Analysis\Code_Analysis\obj\Debug\Code_Analysis.Properties.Resources.resources
+C:\Users\hp\source\repos\theory_of_compile\Code_Analysis\Code_Analysis\obj\Debug\Code_Analysis2.csproj.GenerateResource.cache
+C:\Users\hp\source\repos\theory_of_compile\Code_Analysis\Code_Analysis\obj\Debug\Code_Analysis2.csproj.CoreCompileInputs.cache
+C:\Users\hp\source\repos\theory_of_compile\Code_Analysis\Code_Analysis\obj\Debug\Code_Analysis.exe
+C:\Users\hp\source\repos\theory_of_compile\Code_Analysis\Code_Analysis\obj\Debug\Code_Analysis.pdb

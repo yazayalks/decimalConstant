@@ -1,0 +1,11 @@
+C:\Users\hp\source\repos\CourseLysak\Code_Analysis\Code_Analysis\bin\Debug\Code_Analysis.exe.config
+C:\Users\hp\source\repos\CourseLysak\Code_Analysis\Code_Analysis\bin\Debug\Code_Analysis.exe
+C:\Users\hp\source\repos\CourseLysak\Code_Analysis\Code_Analysis\bin\Debug\Code_Analysis.pdb
+C:\Users\hp\source\repos\CourseLysak\Code_Analysis\Code_Analysis\obj\Debug\courseWorkLysak.csprojAssemblyReference.cache
+C:\Users\hp\source\repos\CourseLysak\Code_Analysis\Code_Analysis\obj\Debug\Code_Analysis.Form1.resources
+C:\Users\hp\source\repos\CourseLysak\Code_Analysis\Code_Analysis\obj\Debug\Code_Analysis.HelpForm.resources
+C:\Users\hp\source\repos\CourseLysak\Code_Analysis\Code_Analysis\obj\Debug\Code_Analysis.Properties.Resources.resources
+C:\Users\hp\source\repos\CourseLysak\Code_Analysis\Code_Analysis\obj\Debug\courseWorkLysak.csproj.GenerateResource.cache
+C:\Users\hp\source\repos\CourseLysak\Code_Analysis\Code_Analysis\obj\Debug\courseWorkLysak.csproj.CoreCompileInputs.cache
+C:\Users\hp\source\repos\CourseLysak\Code_Analysis\Code_Analysis\obj\Debug\Code_Analysis.exe
+C:\Users\hp\source\repos\CourseLysak\Code_Analysis\Code_Analysis\obj\Debug\Code_Analysis.pdb

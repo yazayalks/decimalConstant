@@ -1,0 +1,7 @@
+G:\repos\7LabCompil2\Code_Analysis\Code_Analysis\obj\Release\DecimalConstant.csproj.AssemblyReference.cache
+G:\repos\7LabCompil2\Code_Analysis\Code_Analysis\obj\Release\DecimalConstant.csproj.SuggestedBindingRedirects.cache
+G:\repos\7LabCompil2\Code_Analysis\Code_Analysis\obj\Release\Code_Analysis.Form1.resources
+G:\repos\7LabCompil2\Code_Analysis\Code_Analysis\obj\Release\Code_Analysis.HelpForm.resources
+G:\repos\7LabCompil2\Code_Analysis\Code_Analysis\obj\Release\DecimalConstant.Properties.Resources.resources
+G:\repos\7LabCompil2\Code_Analysis\Code_Analysis\obj\Release\DecimalConstant.csproj.GenerateResource.cache
+G:\repos\7LabCompil2\Code_Analysis\Code_Analysis\obj\Release\DecimalConstant.csproj.CoreCompileInputs.cache
